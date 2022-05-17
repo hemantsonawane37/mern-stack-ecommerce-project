@@ -14,15 +14,9 @@ const path = require("path");
 
 
 
-const corsOptions = {
-    origin: "*",
-    credentials:true,  
-    optionSuccessStatus:200 // For legacy browser support
-}
 
-app.use(Cors(corsOptions))
 app.use(cookieParser())
-app.use(bodyparser.urlencoded({ extended: false })); 
+app.use(bodyparser.urlencoded({ extended: true })); 
 
 
 
