@@ -18,7 +18,7 @@ export const options = {
 export const FeaturesProducts = (Setstate) => {
   const alert = useAlert();
   useEffect(() => {
-    Axios.get("http://localhost:3737/api/v1/products")
+    Axios.get("/api/v1/products")
       .then((data) => {
         Setstate(data.data.Products);
       })
@@ -30,7 +30,7 @@ export const GetProducts = async (keyword, dispatch, actions) => {
   try {
     if (keyword !== "") {
       const data = await Axios.get(
-        `http://localhost:3737/api/v1/products?keyword=${keyword}`
+        `/api/v1/products?keyword=${keyword}`
       );
       dispatch(actions.initializeLoading(false));
       dispatch(actions.initializeProducts(data.data));
@@ -56,9 +56,9 @@ export const GetSearchedProducts = async (
     let categorysecond = `category=${category}`;
     let Link = "";
     if (category !== "all") {
-      Link = `http://localhost:3737/api/v1/products?keyword=${keyword}&price[gt]=${price[0]}&price[lt]=${price[1]}&${categorysecond}&page=${Page}`;
+      Link = `/api/v1/products?keyword=${keyword}&price[gt]=${price[0]}&price[lt]=${price[1]}&${categorysecond}&page=${Page}`;
     } else {
-      Link = `http://localhost:3737/api/v1/products?keyword=${keyword}&price[gt]=${price[0]}&price[lt]=${price[1]}&page=${Page}`;
+      Link = `/api/v1/products?keyword=${keyword}&price[gt]=${price[0]}&price[lt]=${price[1]}&page=${Page}`;
     }
 
     const data = await Axios.get(Link);
@@ -74,7 +74,7 @@ export const GetSearchedProducts = async (
 export const GetSingleProduct = async (id, dispatch, actions, alert) => {
   try {
     const Product = await Axios.get(
-      `http://localhost:3737/api/v1/product/${id}`
+      `/api/v1/product/${id}`
     );
     if (!Product.data.success) {
       alert.error(Product.data.error);
@@ -94,7 +94,7 @@ export const UserLogin = async (data, dispatch, alert, navigate) => {
       withCredentials: true,
     };
     const User = await Axios.post(
-      "http://localhost:3737/api/v1/login",
+      "/api/v1/login",
       data,
       config
     );
@@ -118,7 +118,7 @@ export const UserSignUp = async (data, dispatch, navigate, alert) => {
       withCredentials: true,
     };
     const User = await Axios.post(
-      "http://localhost:3737/api/v1/register",
+      "/api/v1/register",
       data,
       config
     );
@@ -142,7 +142,7 @@ export const ForgotPasswordFun = async (Email, alert) => {
     const config = { headers: { "Content-Type": "application/json" } };
     alert.show("Wait for a minute");
     const Data = await Axios.post(
-      "http://localhost:3737/api/v1/password/forgot",
+      "/api/v1/password/forgot",
       data,
       config
     );
@@ -156,7 +156,7 @@ export const ResetPassword = async (dispatch, data, token, alert) => {
   try {
     const config = { headers: { "Content-Type": "application/json" } };
     const Data = await Axios.put(
-      `http://localhost:3737/api/v1/password/reset/${token}`,
+      `/api/v1/password/reset/${token}`,
       data,
       config
     );
@@ -175,7 +175,7 @@ export const GetUsersOrder = async (dispatch, actions, alert) => {
       withCredentials: true,
     };
     const order = await Axios.get(
-      "http://localhost:3737/api/v1/orders/me",
+      "/api/v1/orders/me",
       config
     );
     dispatch(actions.initializeOrder(order.data.order));
@@ -191,7 +191,7 @@ export const SubmitRatingAndReview = async (data, alert) => {
       withCredentials: true,
     };
     const review = await Axios.put(
-      "http://localhost:3737/api/v1/review",
+      "/api/v1/review",
       data,
       config
     );
@@ -208,7 +208,7 @@ export const GetUserOrderById = async (id, alert, dispatch, actions) => {
       withCredentials: true,
     };
     const order = await Axios.get(
-      `http://localhost:3737/api/v1/order/${id}`,
+      `/api/v1/order/${id}`,
       config
     );
     dispatch(actions.initializeSingleOrder(order.data.order));
@@ -224,7 +224,7 @@ export const AdminGetAllProducts = async (alert, dispatch, actions) => {
       withCredentials: true,
     };
     const products = await Axios.get(
-      `http://localhost:3737/api/v1/admin/products`,
+      `/api/v1/admin/products`,
       config
     );
     //console.log(products.data.Products.length)
@@ -243,7 +243,7 @@ export const AdminGetAllOrders = async (alert, dispatch) => {
       withCredentials: true,
     };
     const orders = await Axios.get(
-      `http://localhost:3737/api/v1/orders/admin`,
+      `/api/v1/orders/admin`,
       config
     );
 
@@ -262,7 +262,7 @@ export const CreateProduct = async (data, alert) => {
       withCredentials: true,
     };
     const product = await Axios.post(
-      "http://localhost:3737/api/v1/product/new",
+      "/api/v1/product/new",
       data,
       config
     );
@@ -280,7 +280,7 @@ export const DeleteProductFun = async (id, alert, navigate) => {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    await Axios.delete(`http://localhost:3737/api/v1/product/${id}`, config);
+    await Axios.delete(`/api/v1/product/${id}`, config);
     navigate("/admin/deshboard");
     alert.show("Product has been deleted successfully");
   } catch (error) {
@@ -294,7 +294,7 @@ export const UpdateProduct = async (id, alert, data) => {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    await Axios.put(`http://localhost:3737/api/v1/product/${id}`, data, config);
+    await Axios.put(`/api/v1/product/${id}`, data, config);
     return true;
   } catch (error) {
     alert.error(error.response?.data.error);
@@ -308,7 +308,7 @@ export const GetAllOrders = async (alert, dispatch, actions) => {
       withCredentials: true,
     };
     const orders = await Axios.get(
-      `http://localhost:3737/api/v1/orders/admin`,
+      `/api/v1/orders/admin`,
       config
     );
     dispatch(actions.initializeAllOrders(orders.data));
@@ -324,7 +324,7 @@ export const DeleteOrder = async (id, alert, dispatch, actions) => {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    await Axios.delete(`http://localhost:3737/api/v1/order/${id}`, config);
+    await Axios.delete(`/api/v1/order/${id}`, config);
     dispatch(actions.initializeAllOrders({}));
 
     return true;
@@ -341,7 +341,7 @@ export const UpdateOrderStatus = async (id, orderstatus, dispatch, alert) => {
       withCredentials: true,
     };
     await Axios.put(
-      `http://localhost:3737/api/v1/order/status/${id}`,
+      `/api/v1/order/status/${id}`,
       data,
       config
     );
@@ -360,7 +360,7 @@ export const AdminGetAllUsers = async (dispatch, alert) => {
       withCredentials: true,
     };
     const users = await Axios.get(
-      `http://localhost:3737/api/v1/admin/users`,
+      `/api/v1/admin/users`,
       config
     );
 
@@ -379,7 +379,7 @@ export const AdminGetUser = async (id, dispatch, alert) => {
       withCredentials: true,
     };
     const user = await Axios.get(
-      `http://localhost:3737/api/v1/user/${id}`,
+      `/api/v1/user/${id}`,
       config
     );
 
@@ -396,7 +396,7 @@ export const UpdateUser = async (id, navigate, dispatch, data, alert) => {
       withCredentials: true,
     };
     const user = await Axios.put(
-      `http://localhost:3737/api/v1/user/update/${id}`,
+      `/api/v1/user/update/${id}`,
       data,
       config
     );
@@ -416,7 +416,7 @@ export const DeleteUser = async (id, dispatch, alert) => {
       withCredentials: true,
     };
     const user = await Axios.delete(
-      `http://localhost:3737/api/v1/user/delete/${id}`,
+      `/api/v1/user/delete/${id}`,
       config
     );
 
@@ -436,7 +436,7 @@ export const GetProductReviews = async (id, dispatch, alert) => {
     };
 
     const reviews = await Axios.get(
-      `http://localhost:3737/api/v1/admin/product/reviews`,
+      `/api/v1/admin/product/reviews`,
       config
     );
     dispatch(actions.initializeReviwes(reviews.data.reviews));
@@ -453,7 +453,7 @@ export const DeleteReview = async (id, productId, dispatch, alert) => {
       params: { id: id, productId: productId },
     };
 
-    await Axios.delete(`http://localhost:3737/api/v1/reviews/delete`, config);
+    await Axios.delete(`/api/v1/reviews/delete`, config);
     dispatch(actions.initializeReviwes([]));
   } catch (error) {
     alert.error(error.response?.data.error);
@@ -469,7 +469,7 @@ export const EditUserProfile = async (data, dispatch, alert) => {
     };
 
     const result = await Axios.put(
-      `http://localhost:3737/api/v1/me/update`,
+      `/api/v1/me/update`,
       data,
       config
     );
