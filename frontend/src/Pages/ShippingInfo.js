@@ -172,8 +172,8 @@ var Button = styled.button`
   background: #ff5757;
   color: white;
   font-size: 1.3vmax;
-  @media (max-width: 600px) {
-    height: 3.5vmax;
+  @media only screen and (max-width: 600px) {
+    height: 4.5vmax;
     font-size: 1.5vmax;
   }
 `;
@@ -201,7 +201,7 @@ var IconDiv = styled.div`
   justify-content: center;
   align-items: center;
   color: #505050;
-  @media (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     font-size: 1vmax;
   }
 `;
@@ -212,6 +212,11 @@ var Input = styled.input`
   border: none;
   outline-style: none;
   font-size: 1vmax;
+  @media only screen and (max-width: 600px) {
+    font-size: 1.5vmax;
+
+
+  }
 `;
 
 var InputParentDiv = styled.div`
@@ -223,7 +228,7 @@ var InputParentDiv = styled.div`
   @media (max-width: 600px) {
     width: 80%;
     margin: 3vmax auto;
-    height: 3vmax;
+    height: 4.5vmax;
   }
 `;
 

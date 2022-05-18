@@ -9,11 +9,12 @@ import { useAlert } from "react-alert";
 import { actions } from "../store";
 import { Debouncing } from "../functions/debouncing";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const FilterCompo = () => {
   const [value, setValue] = useState([0, 80000]);
   const [stateCategory, setCategory] = useState("all");
-
+  const matches = useMediaQuery("(min-width:600px)");
 
   const alert = useAlert();
   const dispatch = useDispatch();
@@ -39,9 +40,10 @@ const FilterCompo = () => {
 
     dispatch(actions.initializeLoading(true));
     Debouncing(random, 2000);
-  }, [keyword, stateCategory,value, alert, dispatch, Page]);
+  }, [keyword, stateCategory, value, alert, dispatch, Page]);
 
   return (
+    <>
     <MainFilterCompoDiv>
       <HeadingDiv>
         <Heading>Filters</Heading>
@@ -66,37 +68,131 @@ const FilterCompo = () => {
         <FilterTitle>Category</FilterTitle>
       </FilterTitleDiv>
       <ParentOfFilter>
-      <FormControl
-                sx={{ minWidth: "80%", minHeight: "100%" }}
-                size="small"
-              >
-                <InputLabel id="demo-multiple-name-label">Category</InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={stateCategory}
-                  onChange={(e) => setCategory(e.target.value)}
-                  required={true}
-                 
-                >
-                  <MenuItem value={"all"}>All</MenuItem> 
-                  <MenuItem value={"T-shirt"}>T-shirt</MenuItem>
-                  <MenuItem value={"Shirt"}>Shirt</MenuItem>
-               
-                </Select>
-              </FormControl>
+        <FormControl
+          sx={
+            matches
+              ? { minWidth: "100%", minHeight: "100%" }
+              : { minWidth: "80%", minHeight: "100%" }
+          }
+          size="small"
+        >
+          <InputLabel id="demo-multiple-name-label">Category</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={stateCategory}
+            onChange={(e) => setCategory(e.target.value)}
+            required={true}
+          >
+            <MenuItem value={"all"}>All</MenuItem>
+            <MenuItem value={"T-shirt"}>T-shirt</MenuItem>
+            <MenuItem value={"Shirt"}>Shirt</MenuItem>
+          </Select>
+        </FormControl>
       </ParentOfFilter>
     </MainFilterCompoDiv>
+    <MainMobileDiv>
+      <MainHeadingDiv>
+        <HeadingText>Filters</HeadingText>
+      </MainHeadingDiv>
+      <FiltersParentDiv>
+      <MobileParentOfFilter>
+     
+        <Box sx={{ width: "100%" }}>
+      <MobileFilterTitle>Price</MobileFilterTitle>
+          <Slider
+            aria-labelledby="range-slider"
+            value={value}
+            onChange={HandleChange}
+            valueLabelDisplay="auto"
+            min={0}
+            max={80000}
+            size={"small"}
+          />
+        </Box>
+      </MobileParentOfFilter>
+    
+      <MobileParentOfFilter>
+      <FormControl
+          sx={
+            matches
+              ? { minWidth: "100%", minHeight: "100%" }
+              : { minWidth: "80%", minHeight: "100%" }
+          }
+          size="small"
+        >
+          <InputLabel id="demo-multiple-name-label">Category</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={stateCategory}
+            onChange={(e) => setCategory(e.target.value)}
+            required={true}
+          >
+            <MenuItem value={"all"}>All</MenuItem>
+            <MenuItem value={"T-shirt"}>T-shirt</MenuItem>
+            <MenuItem value={"Shirt"}>Shirt</MenuItem>
+          </Select>
+        </FormControl>
+      </MobileParentOfFilter>
+      </FiltersParentDiv>
+    </MainMobileDiv>
+    </>
   );
 };
+
+var MobileFilterTitle = styled.span``;
+
+var MobileParentOfFilter = styled.div`
+width:40%;
+// border:1px solid red;
+text-align:center;
+height:100%;
+`;
+
+var FiltersParentDiv = styled.div`
+display:flex;
+width:100vw;
+justify-content:space-around;
+align-items:center;
+// border:1px solid red;
+`;
+
+var MainMobileDiv = styled.div`
+display:none;
+@media only screen and (max-width: 600px) {
+width:100vw;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+
+}
+`;
+var MainHeadingDiv = styled.div`
+display:flex;
+justify-content:center;
+align-items:center;
+padding:1vmax;
+
+`;
+var HeadingText = styled.div`
+font-size:2vmax;
+
+`;
 
 var FilterTitleDiv = styled.div`
   width: 100%;
   //border:1px solid black;
   display: flex;
   justify-content: center;
-  height:2vmax;
-  align-items:center;
+  height: 2vmax;
+  align-items: center;
+  @media only screen and (max-width: 600px) {
+    font-size: 1.3vmax;
+    height: 1.5vmax;
+  }
 `;
 var FilterTitle = styled.span`
   margin: auto;
@@ -113,7 +209,10 @@ var ParentOfFilter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top:3vmax;
+  margin-top: 3vmax;
+  @media only screen and (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 var MainFilterCompoDiv = styled.div`
@@ -134,7 +233,7 @@ var MainFilterCompoDiv = styled.div`
   }
 
   @media only screen and (max-width: 600px) {
-    flex: 2;
+    display: none;
   }
 `;
 

@@ -174,6 +174,10 @@ var ProductName = styled.span`
   margin: auto;
   font-size: 1.1vmax;
   font-weight: 500;
+  @media only screen and (max-width: 600px) {
+    font-size: 1.4vmax;
+
+  }
 `;
 
 var Image = styled.img`

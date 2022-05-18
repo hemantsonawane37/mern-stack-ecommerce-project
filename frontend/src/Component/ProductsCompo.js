@@ -65,13 +65,12 @@ var ProductsParentDiv = styled.div`
 
 var MainProductCompoDiv = styled.div`
   flex: 4.5;
-
-  // border: 1px solid red;
   display: flex;
   flex-direction: column;
   // justify-content: space-between;
   @media only screen and (max-width: 600px) {
-    flex: 4;
+    flex: 1.8;
+    flex-shrink:1;
   }
 `;
 

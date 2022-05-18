@@ -95,9 +95,9 @@ var ProcessToPaymentButton = styled.div`
   &:hover {
     cursor: pointer;
   }
-  @media (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     margin: 4vmax 0vmax;
-    height: 4.5vmax;
+    height: 5vmax;
   }
 `;
 
@@ -151,7 +151,7 @@ var OrderSummaryParentDiv = styled.div`
 var MainParentDiv = styled.div`
   width: 30vw;
   border-left: 1px solid gray;
-  @media (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     width: 100vw;
     border: none;
   }

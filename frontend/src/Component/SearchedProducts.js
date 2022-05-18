@@ -16,5 +16,8 @@ var MainSearchProductcompDiv = styled.div`
   width: 100vw;
   display: flex;
   position:relative;
+  @media only screen and (max-width: 600px) {
+    flex-direction:column;
+  }
  
 `;

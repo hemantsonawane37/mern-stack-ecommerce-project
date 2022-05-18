@@ -16,8 +16,7 @@ const CartProduct = ({ Product }) => {
     } else if (quantityType === "decrease") {
       increaseQuantity(Product._id, quantity, "decrease");
     }
-  }, [quantityType,quantity,Product]);
- 
+  }, [quantityType, quantity, Product]);
 
   return (
     <ParentProductDiv>
@@ -47,7 +46,7 @@ const CartProduct = ({ Product }) => {
             <DecreaseDiv
               onClick={() => {
                 SetQuantity((state) => (state <= 1 ? 1 : state - 1));
-                 SetQuantityType((state) => "decrease");
+                SetQuantityType((state) => "decrease");
               }}
             >
               -
@@ -80,6 +79,10 @@ var PriceDiv = styled.div`
 `;
 var Price = styled.span`
   font-size: 1.5vmax;
+  @media only screen and (max-width: 600px) {
+
+    font-size: 1.7vmax;
+  }
 `;
 
 var QuantityConDiv = styled.div`
@@ -90,10 +93,11 @@ var QuantityDiv = styled.div`
   width: 8vmax;
   height: 3vmax;
   // border: 1px blue solid;
-  @media (max-width: 600px) {
-    font-size: 1.4vmax;
-    width: 6vmax;
-    height: 2vmax;
+  @media only screen and (max-width: 600px) {
+
+    font-size: 1.6vmax;
+    width: 8vmax;
+    height: 4vmax;
   }
 `;
 var IncreaseDiv = styled.div`
@@ -108,10 +112,11 @@ var IncreaseDiv = styled.div`
     background: #ff2222;
     cursor: pointer;
   }
-  @media (max-width: 600px) {
-    font-size: 1.4vmax;
-    width: 6vmax;
-    height: 2vmax;
+  @media only screen and (max-width: 600px) {
+
+    font-size: 1.6vmax;
+    width: 8vmax;
+    height: 4vmax;
   }
 `;
 var DecreaseDiv = styled.div`
@@ -127,10 +132,11 @@ var DecreaseDiv = styled.div`
     background: #ff2222;
     cursor: pointer;
   }
-  @media (max-width: 600px) {
-    font-size: 1.4vmax;
-    width: 6vmax;
-    height: 2vmax;
+  @media only screen and (max-width: 600px) {
+
+    font-size: 1.6vmax;
+    width: 8vmax;
+    height: 4vmax;
   }
 `;
 var Quantity = styled.div`
@@ -153,27 +159,31 @@ var ProductDetailDiv = styled.div`
 var ImageNamePriceDiv = styled.div`
   display: flex;
   height: 10vmax;
-  // border: 1px red solid;
+ 
   align-items: center;
+  @media only screen and (max-width: 600px) {
+    height: 12vmax;
+  }
 `;
 var Image = styled.img`
   object-fit: contain;
   // border: 1px red solid;
-  @media (max-width: 600px) {
-    width: 10vmax;
-    height: 8vmax;
+  @media only screen and (max-width: 600px) {
+    width: 12vmax;
+    height: 10vmax;
   }
 `;
 var ProductName = styled.span`
   font-size: 1.5vmax;
-  @media (max-width: 600px) {
-    font-size: 1.4vmax;
+  @media only screen and (max-width: 600px) {
+    font-size: 1.5vmax;
   }
 `;
 var ProductPrice = styled.span`
   font-size: 1.5vmax;
-  @media (max-width: 600px) {
-    font-size: 1.4vmax;
+  @media only screen and (max-width: 600px) {
+
+    font-size: 1.6vmax;
   }
 `;
 var Remove = styled.button`
@@ -186,8 +196,9 @@ var Remove = styled.button`
     cursor: pointer;
   }
 
-  @media (max-width: 600px) {
-    font-size: 1.4vmax;
+  @media only screen and (max-width: 600px) {
+
+    font-size: 1.6vmax;
   }
 `;
 
@@ -203,10 +214,14 @@ var RightSideDiv = styled.div`
 
 var ParentProductDiv = styled.div`
   width: 100%;
-  //border: 1px blue solid;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media only screen and (max-width: 600px) {
+    height: 15vh;
+  }
 `;
 
 export default CartProduct;

@@ -16,9 +16,14 @@ export const options = {
 };
 
 export const FeaturesProducts = (Setstate) => {
+  const config = {
+    headers: { "Content-Type": "application/json" },
+    withCredentials: true,
+  };
+  
   const alert = useAlert();
   useEffect(() => {
-    Axios.get("/api/v1/products")
+    Axios.get("/api/v1/products",config)
       .then((data) => {
         Setstate(data.data.Products);
       })

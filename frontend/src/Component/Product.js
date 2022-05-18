@@ -18,9 +18,10 @@ const ParentDiv = styled.div`
   }
 
   @media only screen and (max-width: 600px) {
-    width: 22vmax;
-    height: 31vmax;
-    margin: 2vmax 1.5vmax;
+    width: 27vmax;
+    height: 41vmax;
+    margin: 3vmax 1.5vmax;
+    flex-shrink:1;
   }
 `;
 const Image = styled.img`
@@ -56,7 +57,7 @@ max-height:2vmax;
 const Price = styled.span`
   font-weight: 500;
   @media only screen and (max-width: 600px) {
-    font-size: 1.6vmax;
+    font-size: 1.8vmax;
   }
 `;
 const ReviewDiv = styled.div``;

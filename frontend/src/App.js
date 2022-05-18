@@ -29,9 +29,13 @@ import NotFound from "./Pages/NotFound";
 import Profile from "./Pages/Profile";
 
 function App() {
- 
 
   const stripeApiKey = loadStripe("pk_test_51JWEBsSDbCNx7xSM7J1hWTeH26v63baOtdNce5MJ6tPIj9cDEKmqOQFzJ3knemMbaR7Ud5Tqoar7aOtlShvIgMMg006KskUr3x");
+  window.addEventListener("contextmenu", (e) => e.preventDefault());
+  window.addEventListener("load", function() {
+    var viewport = document.querySelector("meta[name=viewport]");
+    viewport.setAttribute("content", viewport.content + ", height=" + window.innerHeight);
+})
   return (
     <div>
       <Router>

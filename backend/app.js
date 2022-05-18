@@ -20,7 +20,6 @@ app.use(bodyparser.urlencoded({ extended: true }));
 
 
 
-
 //Routes
 app.use("/api/v1", ProductR);
 app.use("/api/v1", UserR);

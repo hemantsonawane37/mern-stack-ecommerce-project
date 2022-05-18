@@ -186,6 +186,11 @@ var OrderProductParentDiv = styled.div`
   justify-content: space-between;
   //border: 1px solid red;
   margin-top: 2vmax;
+  @media only screen and (max-width: 600px) {
+    height: 15vmax;
+
+
+  }
 `;
 
 var PriceAndQuantity = styled.span`

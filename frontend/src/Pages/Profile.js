@@ -164,6 +164,12 @@ var FileInput = styled.input`
     outline-style: none;
     font-weight: 400;
     font-size: 1vmax;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 1.6vmax;
+
+
+  }
   }
 `;
 
@@ -175,6 +181,11 @@ var Input = styled.input`
   outline-style: none;
   font-weight: 400;
   font-size: 1vmax;
+  @media only screen and (max-width: 600px) {
+    font-size: 1.6vmax;
+
+
+  }
 `;
 
 var InputDiv = styled.div`
@@ -187,8 +198,10 @@ var InputDiv = styled.div`
   align-items: center;
   margin-top: 2.5vmax;
   @media only screen and (max-width: 600px) {
-    margin-top: 5vmax;
+    margin-top: 4.5vmax;
     width: 60vw;
+  height: 4.5vmax;
+
   }
 `;
 
@@ -209,6 +222,7 @@ var LoginSignUpButton = styled.div`
   }
   @media only screen and (max-width: 600px) {
     height: 4vmax;
+    margin:2vmax auto;
   }
 `;
 
@@ -220,6 +234,10 @@ var LoginSignUpButtonDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media only screen and (max-width: 600px) {
+    margin:2vmax auto;
+  }
+  
 `;
 
 var SignUp = styled.div`
@@ -242,9 +260,12 @@ var MainDiv = styled.div`
 `;
 var ProfileParent = styled.div`
   width: 30vw;
-  border: 1px solid lightgray;
+ 
   @media only screen and (max-width: 600px) {
-    width: 75vw;
+    width: 85vw;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
   }
 `;
 

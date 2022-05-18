@@ -152,6 +152,13 @@ var PayButton = styled.input`
   &:hover {
     cursor: pointer;
   }
+  @media only screen and (max-width: 600px) {
+    width:90%;
+    height: 4.5vmax;
+    margin:1vmax auto;
+
+  }
+
 `;
 
 var InputParentDiv = styled.div`
@@ -160,17 +167,25 @@ var InputParentDiv = styled.div`
   border: 1px solid red;
   margin: 2vmax auto;
   padding: 1vmax 1vmax;
+  @media only screen and (max-width: 600px) {
+ width:90%;
+ height: 2vmax;
+
+  }
 `;
 
 var FormDiv = styled.div`
   width: 30vw;
   height: 60vh;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  border: 1px solid red;
+ 
   text-align: center;
   margin: auto;
+  @media only screen and (max-width: 600px) {
+
+    width: 90vw;
+    height: auto;
+
+  }
 `;
 
 var MainParentDiv = styled.div`

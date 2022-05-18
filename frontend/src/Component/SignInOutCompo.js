@@ -221,6 +221,11 @@ var FileInput = styled.input`
     outline-style: none;
     font-weight: 400;
     font-size: 1vmax;
+    @media only screen and (max-width: 600px) {
+  
+      font-size: 1.5vmax;
+
+    }
   }
 `;
 
@@ -238,9 +243,9 @@ var SignUp = styled.div`
       ? "transform: translateX(0%);"
       : " transform: translateX(-100%);"}
 
-  @media only screen and (max-width: 600px) {
-    width: 75vw;
-  }
+      @media only screen and (max-width: 600px) {
+        width: 85vw;
+      }
 `;
 
 var LoginSignUpButton = styled.div`
@@ -259,7 +264,9 @@ var LoginSignUpButton = styled.div`
     cursor: pointer;
   }
   @media only screen and (max-width: 600px) {
-    height: 4vmax;
+  font-size:2vmax;
+    height: 5vmax;
+     
   }
 `;
 
@@ -267,10 +274,18 @@ var LoginSignUpButtonDiv = styled.div`
   margin: 0px auto;
   width: 85%;
   height: 6vmax;
+ 
   //border:1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media only screen and (max-width: 600px) {
+    margin: 1vmax auto;
+    font-size:2vmax;
+  height: 7vmax;
+   
+ 
+  }
 `;
 
 var ForgotPasswordLink = styled.span`
@@ -299,6 +314,10 @@ var Input = styled.input`
   outline-style: none;
   font-weight: 400;
   font-size: 1vmax;
+  @media only screen and (max-width: 600px) {
+    font-size: 1.7vmax;
+
+  }
 `;
 var InputDiv = styled.div`
   width: 18vw;
@@ -311,7 +330,9 @@ var InputDiv = styled.div`
   margin-top: 2.5vmax;
   @media only screen and (max-width: 600px) {
     margin-top: 5vmax;
-    width: 60vw;
+    width: 80%;
+  height: 5vmax;
+
   }
 `;
 
@@ -330,7 +351,7 @@ var SignInInputParentDiv = styled.div`
       : " transform: translateX(-100%);"}
 
   @media only screen and (max-width: 600px) {
-    width: 75vw;
+    width: 85vw;
   }
 `;
 
@@ -352,6 +373,11 @@ var HeadingText = styled.span`
     cursor: pointer;
     color: red;
   }
+  @media only screen and (max-width: 600px) {
+
+    font-size: 1.8vmax;
+
+  }
 `;
 
 var HeadingParentDiv = styled.div`
@@ -361,6 +387,9 @@ var HeadingParentDiv = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @media only screen and (max-width: 600px) {
+    height: 5vmax;
+  }
 `;
 
 var SigninoutParentDiv = styled.div`
@@ -370,7 +399,7 @@ var SigninoutParentDiv = styled.div`
   overflow: hidden;
 
   @media only screen and (max-width: 600px) {
-    width: 75vw;
+    width: 85vw;
     height: 60vh;
   }
 `;

@@ -14,11 +14,11 @@ const CartCompo = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-      dispatch(
-        actions.initializeCartItem(JSON.parse(localStorage.getItem("cart")))
-      );
-      SetProduct((state) => (state = JSON.parse(localStorage.getItem("cart"))));
-  }, [dispatch, CartProducts,navigate,SetProduct,isAuthenticate]);
+    dispatch(
+      actions.initializeCartItem(JSON.parse(localStorage.getItem("cart")))
+    );
+    SetProduct((state) => (state = JSON.parse(localStorage.getItem("cart"))));
+  }, [dispatch, CartProducts, navigate, SetProduct, isAuthenticate]);
 
   function TotalPrice(Product) {
     let Total = 0;
@@ -28,9 +28,8 @@ const CartCompo = () => {
     });
     return Total;
   }
-//console.log(Product)
+  //console.log(Product)
   const GrossPrice = Product && TotalPrice(Product);
-
 
   return (
     <MainCompoDiv>
@@ -52,7 +51,10 @@ const CartCompo = () => {
               <GrossTotalSpan>Gross Total</GrossTotalSpan>
               <GrossTotalPrice>₹{GrossPrice}</GrossTotalPrice>
             </TotalDiv>
-           <Link to={"/shippinginfo"} style={{textDecoration:"none"}}  > <CheckOut>Check out</CheckOut>  </Link>
+            <Link to={"/shippinginfo"} style={{ textDecoration: "none" }}>
+              {" "}
+              <CheckOut>Check out</CheckOut>{" "}
+            </Link>
           </TotalContDiv>
         </CartProductsParent>
       ) : (
@@ -86,7 +88,7 @@ var ShopNow = styled.div`
     background: #ff2727;
     cursor: pointer;
   }
-  @media (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     width: 20vmax;
     height: 4vmax;
     margin-top: 2vmax;
@@ -99,7 +101,7 @@ var EmptyText = styled.span`
   font-weight: 500;
   font-size: 1.2vmax;
   color: gray;
-  @media (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     font-size: 2vmax;
     width: 30vmax;
   }
@@ -107,7 +109,7 @@ var EmptyText = styled.span`
 var EmptyBigText = styled.span`
   font-size: 2.5vmax;
   font-weight: 500;
-  @media (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     font-size: 3vmax;
   }
 `;
@@ -120,7 +122,7 @@ var EmptyCartCont = styled.div`
   justify-content: center;
   align-items: center;
   // border: 1px solid black;
-  @media (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     margin-top: 4vmax;
   }
 `;
@@ -130,7 +132,7 @@ var EmptyCartImage = styled.img`
   width: 60vw;
   height: 40vh;
   object-fit: contain;
-  @media (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     height: 30vh;
   }
 `;
@@ -150,23 +152,24 @@ var CheckOut = styled.div`
     background: #ff2222;
     cursor: pointer;
   }
-  @media (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
+    width: 100%;
     font-size: 1.4vmax;
 
-    height: 3vmax;
+    height: 5vmax;
   }
 `;
 
 var GrossTotalSpan = styled.span`
   font-size: 1.5vmax;
-  @media (max-width: 600px) {
-    font-size: 1.4vmax;
+  @media only screen and (max-width: 600px) {
+    font-size: 1.6vmax;
   }
 `;
 var GrossTotalPrice = styled.span`
   font-size: 1.5vmax;
-  @media (max-width: 600px) {
-    font-size: 1.4vmax;
+  @media only screen and (max-width: 600px) {
+    font-size: 1.6vmax;
   }
 `;
 
@@ -179,12 +182,18 @@ var TotalDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    justify-content: space-around;
+    height: 4.5vmax;
+  }
 `;
 
 var TotalContDiv = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+ 
 `;
 
 var Products = styled.span`
@@ -212,15 +221,19 @@ var Heading = styled.div`
 
 var CartProductsParent = styled.div`
   width: 85vw;
-  // border: 1px solid red;
   margin: 0px auto;
+  @media only screen and (max-width: 600px) {
+    width: 95vw;
+
+  }
 `;
 
 var MainCompoDiv = styled.div`
   width: 100vw;
-  // border: 1px solid red;
+
   //display:flex;
   margin-top: 1vmax;
+
 `;
 
 export default CartCompo;

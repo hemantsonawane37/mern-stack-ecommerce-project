@@ -11,7 +11,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GetProducts } from "../APICallFun/ApiFun";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../store";
-import { Badge } from '@mui/material';
+import { Badge } from "@mui/material";
 import { Debouncing } from "../functions/debouncing";
 
 const MainDiv = styled.div`
@@ -144,7 +144,7 @@ const MenuDiv = styled.div`
 `;
 
 const SideMenuDiv = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -152,9 +152,16 @@ const SideMenuDiv = styled.div`
   height: 100vh;
   background-color: white;
   z-index: 7;
-  transition: all 300ms ease-in-out;
+  transition: all 300ms;
   overflow: hidden;
-  ${(Props) => (Props.slide === true ? "display:block;" : " display:none;")};
+
+  ${(Props) =>
+    Props.slide === true
+      ? "transform: translate(0%);"
+      : "transform: translate(-100%);"};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 const CloseSignDiv = styled.div`
   width: 100%;
@@ -217,7 +224,7 @@ const NavBar = () => {
     );
   }, [dispatch]);
 
-  let isAuthenticated =  JSON.parse(localStorage.getItem("user"));
+  let isAuthenticated = JSON.parse(localStorage.getItem("user"));
 
   const Submit = async () => {
     GetProducts(SearchValue, dispatch, actions);
@@ -239,26 +246,26 @@ const NavBar = () => {
 
   return (
     <>
-      <MainDiv>
-        <SideMenuDiv slide={MenuCondition}>
-          <CloseSignDiv>
-            {" "}
-            <Close
-              style={{ margin: "1.3vmax", transform: "scale(1.1)" }}
-              onClick={() => MenuConditionFun()}
-            />
-          </CloseSignDiv>
-          <MyParentDiv>
-            <Link to={"/myorder"} style={{ textDecoration: "none" }}>
-              <MyChildtDiv>My Orders</MyChildtDiv>
-            </Link>
-          </MyParentDiv>
-          <MyParentDiv>
+      <SideMenuDiv slide={MenuCondition}>
+        <CloseSignDiv>
+          {" "}
+          <Close
+            style={{ margin: "1.3vmax", transform: "scale(1.1)" }}
+            onClick={() => MenuConditionFun()}
+          />
+        </CloseSignDiv>
+        <MyParentDiv>
+          <Link to={"/myorder"} style={{ textDecoration: "none" }}>
+            <MyChildtDiv>My Orders</MyChildtDiv>
+          </Link>
+        </MyParentDiv>
+        <MyParentDiv>
           <Link to={"/profile"} style={{ textDecoration: "none" }}>
             <MyChildtDiv>My Profile</MyChildtDiv>
-            </Link>
-          </MyParentDiv>
-        </SideMenuDiv>
+          </Link>
+        </MyParentDiv>
+      </SideMenuDiv>
+      <MainDiv>
         <LeftSection>
           <MenuDiv>
             <Menu
@@ -363,29 +370,30 @@ var MyProfileParent = styled.div`
   align-items: center;
   margin: auto;
   @media only screen and (max-width: 600px) {
-    display:none;
+    display: none;
   }
 `;
 var MyProfile = styled.span`
   font-size: 1.2vmax;
   text-align: center;
-  color:black;
+  color: black;
   font-weight: 500;
   cursor: pointer;
 `;
 
 var MyParentDiv = styled.div`
-  width: 100%;
-  height: 4vmax;
+  width: 90%;
+  height: 4.6vmax;
   border: 1px solid lightgray;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1vmax;
+  margin: 1vmax auto;
   border-radius: 2.5vmax;
+  margin-top: 1.5vmax;
 `;
 var MyChildtDiv = styled.span`
-  font-size: 1.4vmax;
+  font-size: 1.8vmax;
   color: #414141;
 `;
 
@@ -395,7 +403,7 @@ var MobileSearchInput = styled.input`
   border: none;
   padding: 0vmax 1.1vmax;
   outline-style: none;
-  font-size: 1.6vmax;
+  font-size: 1.8vmax;
 `;
 
 var MobileNavBarSearchButton = styled.div`
@@ -417,14 +425,18 @@ var MobileSearchDiv = styled.div`
 
 var MobileNavBarParentDiv = styled.div`
   display: none;
-  transition: all 300ms;
+  transition: all 350ms;
 
   @media only screen and (max-width: 600px) {
+  
+    z-index: 6;
     background-color: #e6deff;
     width: 100vw;
-    height: 7vh;
-    display: flex;
-    ${(prop) => (prop.visible ? "display:flex;" : "display:none;")}
+    ${(prop) => (prop.visible ? "opacity:1;  position: sticky; height: 7vh; " : "opacity:0;  position: static; height: 0vh;")}
+    top: 0;
+    left: 0;
+    right: 0;
+    display:flex;
     justify-content: center;
     align-items: center;
   }
