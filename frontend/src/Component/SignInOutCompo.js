@@ -6,7 +6,7 @@ import {
   FaceOutlined,
   AccountCircle,
 } from "@material-ui/icons";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { UserLogin, UserSignUp } from "../APICallFun/ApiFun";
 import { useAlert } from "react-alert";
 import { useNavigate, Link } from "react-router-dom";

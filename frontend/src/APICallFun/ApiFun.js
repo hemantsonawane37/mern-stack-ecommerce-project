@@ -119,7 +119,7 @@ export const UserLogin = async (data, dispatch, alert, navigate) => {
 export const UserSignUp = async (data, dispatch, navigate, alert) => {
   try {
     const config = {
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: { "Content-Type": "application/json" },
       withCredentials: true,
       
     };
