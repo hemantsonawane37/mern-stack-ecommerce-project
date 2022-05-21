@@ -119,8 +119,9 @@ export const UserLogin = async (data, dispatch, alert, navigate) => {
 export const UserSignUp = async (data, dispatch, navigate, alert) => {
   try {
     const config = {
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "multipart/form-data" },
       withCredentials: true,
+      
     };
     const User = await Axios.post(
       "/api/v1/register",

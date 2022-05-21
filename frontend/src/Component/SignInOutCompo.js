@@ -17,6 +17,8 @@ const SignInOutCompo = () => {
   const [Password, SetPassword] = useState("");
   const [Name, SetName] = useState("");
   const [stateImage, setImage] = useState([]);
+  const [statePreImage, setPreImage] = useState([]);
+
   const isAdminAuthenticated = JSON.parse(localStorage.getItem("user"));
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -64,11 +66,13 @@ const SignInOutCompo = () => {
     const Image = Array.from(e.target.files);
 
     setImage([]);
-
+    setPreImage([])
     const reader = new FileReader();
     reader.onload = function () {
       if (reader.readyState === 2) {
         setImage((old) => [...old, reader.result]);
+        setPreImage((old) => [...old, reader.result]);
+
       }
     };
     reader.readAsDataURL(Image[0]);
@@ -163,7 +167,7 @@ const SignInOutCompo = () => {
               />{" "}
               <Input
                 type={"password"}
-                placeholder={"Password*"}
+                placeholder={"Password"}
                 value={Password}
                 onChange={(e) => SetPassword(e.target.value)}
               />
@@ -180,6 +184,12 @@ const SignInOutCompo = () => {
                 onChange={(e) => HandleImageUpload(e)}
               ></FileInput>
             </InputDiv>
+            <PreviweParentDiv visible={statePreImage}>
+              {statePreImage &&
+                statePreImage.map((img, I) => {
+                  return <PreviweImage src={img} key={I} />;
+                })}
+            </PreviweParentDiv>
             <LoginSignUpButtonDiv>
               <LoginSignUpButton onClick={() => RegisterUser()}>
                 Sign Up
@@ -191,6 +201,23 @@ const SignInOutCompo = () => {
     </MainAuthDiv>
   );
 };
+
+var PreviweImage = styled.img`
+  height: 100%;
+  width: 7vmax;
+  flex-shrink: 0;
+  margin:auto;
+`;
+
+var PreviweParentDiv = styled.div`
+  width: 100%;
+  height: 7vmax;
+  //border: 1px solid red;
+  display: flex;
+  
+  ${(prop) => (prop.visible.length ? "display:flex;" : "display:none;")}
+  
+`;
 
 var FileInput = styled.input`
   color: transparent;
@@ -394,19 +421,21 @@ var HeadingParentDiv = styled.div`
 
 var SigninoutParentDiv = styled.div`
   width: 22vw;
-  height: 72vh;
+  height: auto;
   background: white;
   overflow: hidden;
+  margin-bottom:2vmax;
+  margin-top:2vmax;
 
   @media only screen and (max-width: 600px) {
     width: 85vw;
-    height: 60vh;
+    height: 70vh;
   }
 `;
 
 var MainAuthDiv = styled.div`
   width: 100vw;
-  height: 90vh;
+  height: auto;
   background: #ffebeb;
   display: flex;
   justify-content: center;

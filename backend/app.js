@@ -12,9 +12,8 @@ const path = require("path");
 const fileUpload = require("express-fileupload");
 
 app.use(cookieParser());
-
 app.use(bodyparser.urlencoded({extended: true }));
-app.use(fileUpload());
+app.use(fileUpload({limits:{fileSize:50 * 10000 *10000}}));
 
 
 // routes import
@@ -30,10 +29,10 @@ app.use("/api/v1", ProductR);
 app.use("/api/v1", UserR);
 app.use("/api/v1", OrderR);
 
-app.use(express.static(path.join(__dirname,'../frontend/build')));
-app.get("*",(req,res)=> {
- res.sendFile(path.join(__dirname,"../frontend/build/index.html"))
-})
+// app.use(express.static(path.join(__dirname,'../frontend/build')));
+// app.get("*",(req,res)=> {
+//  res.sendFile(path.join(__dirname,"../frontend/build/index.html"))
+// })
 
 app.use(errormiddleware);
 
