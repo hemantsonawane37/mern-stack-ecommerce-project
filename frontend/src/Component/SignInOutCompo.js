@@ -207,6 +207,7 @@ var PreviweImage = styled.img`
   width: 7vmax;
   flex-shrink: 0;
   margin:auto;
+  object-fit: contain;
 `;
 
 var PreviweParentDiv = styled.div`
