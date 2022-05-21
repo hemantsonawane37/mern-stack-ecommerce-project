@@ -2,11 +2,13 @@ import React from 'react'
 import styled from 'styled-components';
 import AdminAllOrdersCompo from '../Component/AdminAllOrdersCompo';
 import DeshboardSideBar from '../Component/DeshboardSideBar';
+import MetaData from '../Component/Metadata/MetaData';
 
 
 const AdminOrders = () => {
   return (
     <>
+    <MetaData title={"Admin"}/>
     <AllOrdersParentDiv>
      <DeshboardSideBar/>
      <AdminAllOrdersCompo/>

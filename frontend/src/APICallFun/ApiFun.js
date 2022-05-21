@@ -135,8 +135,7 @@ export const UserSignUp = async (data, dispatch, navigate, alert) => {
     dispatch(actions.initializeUser(User.data));
     navigate("/");
   } catch (error) {
-    console.log(data);
-
+console.log(data)
     alert.error(error.response.data.error);
   }
 };

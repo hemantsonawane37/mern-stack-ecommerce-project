@@ -2,11 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { Error } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import MetaData from "../Component/Metadata/MetaData";
 
 const NotFound = () => {
   return (
     <>
       <MainDiv>
+      <MetaData title={"Not Found"}/>
         <Error style={{ color: "red", fontSize: "5vmax" }} />
       <P>Not Found</P>
      <Link style={{textDecoration:"none"}} to={"/"} ><HomeLink>Home</HomeLink></Link>

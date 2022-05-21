@@ -8,6 +8,7 @@ import { Country, State } from "country-state-city";
 import { actions } from "../store";
 import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
+import MetaData from "../Component/Metadata/MetaData";
 
 const ShippingInfo = () => {
   const [CountryName, setCountryName] = React.useState("");
@@ -60,6 +61,7 @@ const ShippingInfo = () => {
 
   return (
     <>
+    <MetaData title={"Shipping Info"}/>
       <NavBar />
       <HorizontalLabelPosition OrderSteps={0} />
       <MainParentDiv>

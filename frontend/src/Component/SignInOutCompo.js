@@ -143,7 +143,7 @@ const SignInOutCompo = () => {
                 type={"text"}
                 value={Name}
                 onChange={(e) => SetName(e.target.value)}
-                placeholder={"Name"}
+                placeholder={"Name*"}
               />
             </InputDiv>
             <InputDiv>
@@ -152,7 +152,7 @@ const SignInOutCompo = () => {
               />{" "}
               <Input
                 type={"email"}
-                placeholder={"Email"}
+                placeholder={"Email*"}
                 value={Email}
                 onChange={(e) => SetEmail(e.target.value)}
               />
@@ -163,7 +163,7 @@ const SignInOutCompo = () => {
               />{" "}
               <Input
                 type={"password"}
-                placeholder={"Password"}
+                placeholder={"Password*"}
                 value={Password}
                 onChange={(e) => SetPassword(e.target.value)}
               />

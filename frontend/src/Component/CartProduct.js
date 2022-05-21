@@ -23,7 +23,7 @@ const CartProduct = ({ Product }) => {
       <LeftSideDiv>
         <ImageNamePriceDiv>
           <Image
-            src="/images/Black-T-Shirt.png"
+            src={Product.images[0]?.url}
             width={"200vmax"}
             height={"90%"}
           ></Image>
@@ -151,8 +151,9 @@ var Quantity = styled.div`
 var ProductDetailDiv = styled.div`
   display: flex;
   flex-direction: column;
-  // border:1px red solid;
+  //border:1px red solid;
   height: 90%;
+  width:100%;
   justify-content: space-around;
 `;
 

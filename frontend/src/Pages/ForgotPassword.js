@@ -3,6 +3,7 @@ import styled from "styled-components";
 import NavBar from "../Component/NavBar";
 import { ForgotPasswordFun } from "../APICallFun/ApiFun";
 import { useAlert } from "react-alert";
+import MetaData from '../Component/Metadata/MetaData';
 
 
 const ForgotPassword = () => {
@@ -13,6 +14,7 @@ const ForgotPassword = () => {
 
   return (
     <>
+    <MetaData title={"Forgot Password"}/>
       <NavBar />
       <MainDiv>
         <ParentDiv>

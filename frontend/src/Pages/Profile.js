@@ -10,6 +10,7 @@ import NavBar from "../Component/NavBar";
 import { EditUserProfile } from "../APICallFun/ApiFun";
 import { useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
+import MetaData from "../Component/Metadata/MetaData";
 
 const Profile = () => {
   const [Email, SetEmail] = useState("");
@@ -54,6 +55,7 @@ const Profile = () => {
 
   return (
     <>
+    <MetaData title={"Profile"}/>
 <NavBar/>
       <MainDiv>
         <ProfileParent>

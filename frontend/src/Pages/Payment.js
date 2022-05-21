@@ -14,6 +14,7 @@ import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { actions } from "../store";
+import MetaData from "../Component/Metadata/MetaData";
 
 const Payment = () => {
   const payBtn = useRef(null);
@@ -113,6 +114,7 @@ const Payment = () => {
   return (
     <>
       <MainParentDiv>
+      <MetaData title={"Payment"}/>
         <HorizontalLabelPosition OrderSteps={2} />
 
         <FormDiv>

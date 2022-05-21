@@ -6,6 +6,7 @@ import { GetUserOrderById } from "../APICallFun/ApiFun";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../store";
 import { useAlert } from "react-alert";
+import MetaData from "../Component/Metadata/MetaData";
 
 const MyOrderProductPage = () => {
   const [StateOrder, setStateOrder] = useState({});
@@ -22,6 +23,7 @@ const MyOrderProductPage = () => {
 
   return (
     <>
+    <MetaData title={"My Order"}/>
       <NavBar />
       <MainParentDiv>
         <MainParentDivChild>

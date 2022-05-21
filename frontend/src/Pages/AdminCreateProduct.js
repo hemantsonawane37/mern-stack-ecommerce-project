@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import DeshboardSideBar from '../Component/DeshboardSideBar';
 import AdminCreateProducts from '../Component/AdminCreateProducts';
+import MetaData from '../Component/Metadata/MetaData';
 
 
 const AdminCreateProduct = () => {
@@ -9,6 +10,7 @@ const AdminCreateProduct = () => {
 
   return (
    <>
+   <MetaData title={"Admin"}/>
    <MainParentDiv>
    <DeshboardSideBar/>
    <AdminCreateProducts/>
