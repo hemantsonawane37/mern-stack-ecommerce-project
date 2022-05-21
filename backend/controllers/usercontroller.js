@@ -30,7 +30,6 @@ exports.RegisterUser = CatchAsyncError(async (req, res, next) => {
       name,
       email,
       password,
-      avatar: { public_id: "", url: "" },
     });
     user.password = undefined;
     SendToken(user, 201, res);

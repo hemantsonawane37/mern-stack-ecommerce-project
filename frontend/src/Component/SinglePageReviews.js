@@ -13,7 +13,7 @@ const SinglePageReviews = () => {
     setStateReviwes(productReviwe);
   }, [productReviwe]);
 
-  //console.log(stateReviwes)
+
   return (
     <>
       <HeadingDiv>
@@ -25,7 +25,7 @@ const SinglePageReviews = () => {
             return (
                 <ParentReviewDiv key={review._id} >
                   <Img
-                    src={review.avatar?.url === "" ? "/images/profile.jpg": review.avatar?.url}
+                    src={review.avatar?.url}
                     alt="img"
                     width={"60vmax"}
                     height={"60vmax"}
